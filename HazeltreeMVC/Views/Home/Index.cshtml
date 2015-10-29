@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Security Lookup";
+}
+
+    <div class="container" style="width:60%">
+        <div class="form-group" role="group">
+            <div>
+                <h2>Security Lookup</h2>
+            </div>
+
+            <form class="form-horizontal" role="form">
+
+                <div class="form-group">
+                    <label for="contain">Security Code</label>
+                    <input class="form-control" id="SecurityCode" type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="contain">Search for text</label>
+                    <input class="form-control" id="Searchtext" type="text" />
+                </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-info btn-group-sm" onclick="Click()"><span class="glyphicon glyphicon-search"></span> Search</button>
+                </div>
+            </form>
+        </div>
+
+        </div>
+
+<div id="Result" >
+
+</div>
+
+<script>
+    function Click()
+    {
+        
+        var securityCode = $("#SecurityCode").val();
+        var searchtext = $("#Searchtext").val();
+        var data = "{ SecurityCode: '" + securityCode + "',SearchText: '" + searchtext + "'}";
+     
+        $.ajax({
+            url: '@Url.Content("~/Home/SearchSecurities")',
+            type: 'POST',
+            data: data,
+            dataType: 'html',
+            contentType: "application/json; charset=utf-8",
+            success: function (result) {
+                $('#Result').html(result);
+            }
+              
+        })
+    }
+
+
+</script>
