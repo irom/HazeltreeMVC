@@ -1,0 +1,51 @@
+﻿<div class="container" style="width:60%" >
+    <div class="form-group" role="group">
+        <div>
+            <h2>Security Lookup</h2>
+        </div>
+
+        <form class="form-horizontal" role="form">
+
+            <div class="form-group">
+                <label for="contain">Security Code</label>
+                <input class="form-control" id="SecurityCode" type="text" ng-model="securityCode" />
+            </div>
+            <div class="form-group">
+                <label for="contain">Search for text</label>
+                <input class="form-control" id="Searchtext" type="text" ng-model="securityText" />
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-info btn-group-sm" ng-click="onclick()"><span class=" glyphicon glyphicon-search"></span> Search</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+
+    <div class="form-group">
+        <table class="table table-condensed">
+            <thead>
+                <tr style="background:yellow">
+                    <th>SecurityId</th>
+                    <th>SecurityCode</th>
+                    <th>SecurityName</th>
+                    <th>Sedol</th>
+                    <th>Cusip</th>
+                    <th>Isin</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in result">
+                <tr>
+                    <td>{{item.SecurityId}}</td>
+                    <td>{{item.SecurityCode}}</td>
+                    <td>{{item.SecurityName}}</td>
+                    <td>{{item.Sedol}}</td>
+                    <td>{{item.Cusip}}</td>
+                    <td>{{item.Isin}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
